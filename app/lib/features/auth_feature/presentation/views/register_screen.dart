@@ -1,10 +1,10 @@
-import 'package:app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../constants.dart';
-import '../helper/show_snackBar.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/custom_text_filed.dart';
+import '../../../../constants.dart';
+import '../../../../helper/show_snackBar.dart';
+import '../manager/auth_cubit/auth_cubit.dart';
+import 'widgets/custom_button.dart';
+import '../../../../widgets/custom_text_filed.dart';
 import 'login_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 

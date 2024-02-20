@@ -1,14 +1,14 @@
-import 'package:app/cubits/auth_cubit/auth_cubit.dart';
-import 'package:app/pages/register_screen.dart';
+import 'package:app/features/auth_feature/presentation/views/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../constants.dart';
-import '../cubits/chat_cubit/chat_cubit.dart';
-import '../helper/show_snackBar.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/custom_text_filed.dart';
-import 'chat_screen.dart';
+import '../../../../constants.dart';
+import '../../../../cubits/chat_cubit/chat_cubit.dart';
+import '../../../../helper/show_snackBar.dart';
+import '../manager/auth_cubit/auth_cubit.dart';
+import 'widgets/custom_button.dart';
+import '../../../../widgets/custom_text_filed.dart';
+import '../../../../pages/chat_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginScreen extends StatelessWidget {

@@ -1,8 +1,9 @@
-import 'package:app/cubits/auth_cubit/auth_cubit.dart';
-import 'package:app/pages/login_screen.dart';
-import 'package:app/pages/register_screen.dart';
+import 'package:app/features/auth_feature/presentation/views/login_screen.dart';
+import 'package:app/features/auth_feature/presentation/views/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'features/auth_feature/presentation/manager/auth_cubit/auth_cubit.dart';
 
 Route? generateRoute(RouteSettings settings) {
   switch (settings.name) {
