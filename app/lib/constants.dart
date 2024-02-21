@@ -8,5 +8,5 @@ const kId='id';
 const kError='<><><> error is <><><>';
 
 // backend part
-const baseUrl = 'http://localhost:8000';
+const baseUrl = 'http://10.0.2.2:8000';
 

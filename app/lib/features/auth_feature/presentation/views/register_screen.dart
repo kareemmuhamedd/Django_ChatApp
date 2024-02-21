@@ -13,9 +13,11 @@ class RegisterScreen extends StatelessWidget {
 
   RegisterScreen({super.key});
 
-  String? email;
-
+  String? username;
+  String? fName;
+  String? lName;
   String? password;
+  String? retypePassword;
 
   GlobalKey<FormState> formKey = GlobalKey();
 
@@ -53,13 +55,13 @@ class RegisterScreen extends StatelessWidget {
                     'assets/images/loginIcon.png',
                     color: Colors.blueGrey[300],
                     scale: 0.8,
-                    height: 300,
+                    height: 200,
                   ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'REGISTER',
+                        'Sign Up',
                         style: TextStyle(
                           fontSize: 25,
                           color: Colors.white,
@@ -69,19 +71,45 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   CustomTextFormFiled(
-                      hintText: 'email', onChange: (data) => email = data),
+                    hintText: 'Username',
+                    onChange: (data) => username = data,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomTextFormFiled(
+                    hintText: 'First Name',
+                    onChange: (data) => fName = data,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomTextFormFiled(
+                    hintText: 'Last Name',
+                    onChange: (data) => lName = data,
+                  ),
                   const SizedBox(height: 10),
                   CustomTextFormFiled(
                     hintText: 'Password',
                     onChange: (data) => password = data,
                   ),
                   const SizedBox(height: 10),
+                  CustomTextFormFiled(
+                    hintText: 'Retype Password',
+                    onChange: (data) => retypePassword = data,
+                  ),
+                  const SizedBox(height: 10),
                   CustomButton(
-                    text: 'Register',
+                    text: 'Sign Up',
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        BlocProvider.of<AuthCubit>(context).registration();
-                      } else {}
+                        if (password == retypePassword) {
+                          BlocProvider.of<AuthCubit>(context).registration(
+                            username!,
+                            fName!,
+                            lName!,
+                            password!,
+                          );
+                        } else {
+                          showSnackBar(context, "Passwords don't match", Colors.red);
+                        }
+                      }
                     },
                   ),
                   const SizedBox(
@@ -105,7 +133,7 @@ class RegisterScreen extends StatelessWidget {
                           );
                         },
                         child: Text(
-                          'Login',
+                          'Sign In',
                           style: TextStyle(color: Colors.blueGrey[300]),
                         ),
                       ),

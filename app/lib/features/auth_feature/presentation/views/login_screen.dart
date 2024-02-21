@@ -13,7 +13,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String routeName = 'loginScreen';
-  String? email;
+  String? username;
 
   String? password;
   GlobalKey<FormState> formKey = GlobalKey();
@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
           if (state is LoginLoading) {
             isLoading = true;
           } else if (state is LoginSuccess) {
-            BlocProvider.of<ChatCubit>(context).getMessage();
+            //BlocProvider.of<ChatCubit>(context).getMessage();
             // Navigator.pushNamed(
             //   context,
             //   ChatScreen.routeName,
@@ -62,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'LOGIN',
+                          'Sign In',
                           style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
@@ -74,8 +74,8 @@ class LoginScreen extends StatelessWidget {
                       height: 20,
                     ),
                     CustomTextFormFiled(
-                      hintText: 'Email',
-                      onChange: (String data) => email = data,
+                      hintText: 'Username',
+                      onChange: (String data) => username = data,
                     ),
                     const SizedBox(
                       height: 10,
@@ -88,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                       height: 10,
                     ),
                     CustomButton(
-                      text: 'Login',
+                      text: 'Sign In',
                       onTap: () async {
                         if (formKey.currentState!.validate()) {
                           // BlocProvider.of<AuthBloc>(context).add(
@@ -98,6 +98,7 @@ class LoginScreen extends StatelessWidget {
                           //     password: password!,
                           //   ),
                           // );
+                          BlocProvider.of<AuthCubit>(context).loginUser(username!, password!);
                         } else {}
                       },
                     ),
@@ -122,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            'Register',
+                            'Sign Up',
                             style: TextStyle(color: Colors.blueGrey[300]),
                           ),
                         ),
