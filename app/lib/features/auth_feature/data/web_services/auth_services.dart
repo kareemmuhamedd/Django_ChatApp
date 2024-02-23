@@ -1,4 +1,5 @@
 import 'package:app/constants.dart';
+import 'package:app/features/auth_feature/data/models/response_user_model.dart';
 import 'package:dio/dio.dart';
 
 class AuthServices {
@@ -13,7 +14,7 @@ class AuthServices {
     dio = Dio(options);
   }
 
-  Future signIn(
+  Future<ResponseUserModel> signIn(
     String username,
     String password,
   ) async {
@@ -25,14 +26,16 @@ class AuthServices {
           'password': password,
         },
       );
-      print(response);
-      return response;
+      print(ResponseUserModel.fromJson(response.data).user.username);
+      print(ResponseUserModel.fromJson(response.data).tokens.access);
+      return ResponseUserModel.fromJson(response.data);
     } catch (error) {
       print(error.toString());
+      throw error; // Rethrow error to handle it at the caller's end
     }
   }
 
-  Future signUp(
+  Future<ResponseUserModel> signUp(
     String username,
     String fName,
     String lName,
@@ -48,10 +51,11 @@ class AuthServices {
           'password': password,
         },
       );
-      print(response);
-      return response;
+      print(response.data);
+      return ResponseUserModel.fromJson(response.data);
     } catch (error) {
       print(error.toString());
+      throw error; // Rethrow error to handle it at the caller's end
     }
   }
 }

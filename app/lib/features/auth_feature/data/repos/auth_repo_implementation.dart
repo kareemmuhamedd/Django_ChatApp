@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failures.dart';
+import '../models/response_user_model.dart';
 import '../web_services/auth_services.dart';
 import 'auth_repo.dart';
 
@@ -9,13 +10,13 @@ class AuthRepositoryImplementation extends AuthRepository {
   AuthRepositoryImplementation(this.authServices);
 
   @override
-  Future<Either<Failure, dynamic>> signIn(
-    String username,
-    String password,
-  ) async {
+  Future<Either<Failure, ResponseUserModel>> signIn(
+      String username,
+      String password,
+      ) async {
     try {
       final response = await authServices.signIn(username, password);
-      return right(response.data);
+      return right(response);
     } catch (error) {
       print('errrrrrrrrrrrrrrrrrr');
       return left(
@@ -27,12 +28,12 @@ class AuthRepositoryImplementation extends AuthRepository {
   }
 
   @override
-  Future<Either<Failure, dynamic>> signUp(
-    String username,
-    String fName,
-    String lName,
-    String password,
-  ) async {
+  Future<Either<Failure, ResponseUserModel>> signUp(
+      String username,
+      String fName,
+      String lName,
+      String password,
+      ) async {
     try {
       final response = await authServices.signUp(
         username,
@@ -40,7 +41,7 @@ class AuthRepositoryImplementation extends AuthRepository {
         lName,
         password,
       );
-      return right(response.data);
+      return right(response);
     } catch (error) {
       print('errrrrrrrrrrrrrrrrrr');
       return left(
