@@ -28,3 +28,15 @@ class RegisterFailure extends AuthState {
 
   RegisterFailure({required this.errorMsg});
 }
+
+class LogoutInitial extends AuthState {}
+
+class LogoutSuccess extends AuthState {}
+
+class LogoutLoading extends AuthState {}
+
+class LogoutFailure extends AuthState {
+  final String errorMsg;
+
+  LogoutFailure({required this.errorMsg});
+}

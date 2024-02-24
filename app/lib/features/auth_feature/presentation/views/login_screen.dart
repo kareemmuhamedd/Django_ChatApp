@@ -1,4 +1,5 @@
 import 'package:app/features/auth_feature/presentation/views/register_screen.dart';
+import 'package:app/features/home_feature/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,11 +32,10 @@ class LoginScreen extends StatelessWidget {
             isLoading = true;
           } else if (state is LoginSuccess) {
             //BlocProvider.of<ChatCubit>(context).getMessage();
-            // Navigator.pushNamed(
-            //   context,
-            //   ChatScreen.routeName,
-            //   arguments: email,
-            // );
+            Navigator.pushNamed(
+              context,
+              HomeScreen.routeName,
+            );
             isLoading = false;
           } else if (state is LoginFailure) {
             showSnackBar(context, state.errorMsg, Colors.red);
@@ -98,7 +98,10 @@ class LoginScreen extends StatelessWidget {
                           //     password: password!,
                           //   ),
                           // );
-                          BlocProvider.of<AuthCubit>(context).loginUser(username!, password!);
+                          BlocProvider.of<AuthCubit>(context).loginUser(
+                            username!,
+                            password!,
+                          );
                         } else {}
                       },
                     ),

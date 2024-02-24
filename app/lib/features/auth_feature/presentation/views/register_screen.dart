@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../constants.dart';
 import '../../../../helper/show_snackBar.dart';
+import '../../../home_feature/home_screen.dart';
 import '../manager/auth_cubit/auth_cubit.dart';
 import 'widgets/custom_button.dart';
 import '../../../../widgets/custom_text_filed.dart';
@@ -31,11 +32,10 @@ class RegisterScreen extends StatelessWidget {
           if (state is RegisterLoading) {
             isLoading = true;
           } else if (state is RegisterSuccess) {
-            // Navigator.pushNamed(
-            //   context,
-            //   ChatScreen.routeName,
-            //   arguments: email,
-            // );
+            Navigator.pushNamed(
+              context,
+              HomeScreen.routeName,
+            );
             isLoading = false;
           } else if (state is RegisterFailure) {
             showSnackBar(context, state.errorMsg, Colors.red);
