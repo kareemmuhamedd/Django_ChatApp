@@ -27,7 +27,14 @@ Route? generateRoute(RouteSettings settings) {
               ); // You can return a loading indicator here if needed
             } else {
               if (snapshot.hasData && snapshot.data!) {
-                return const HomeScreen();
+                return BlocProvider<AuthCubit>(
+                  create: (context) => AuthCubit(
+                    AuthRepositoryImplementation(
+                      AuthServices(),
+                    ),
+                  ),
+                  child: const HomeScreen(),
+                );
               } else {
                 return BlocProvider<AuthCubit>(
                   create: (context) => AuthCubit(

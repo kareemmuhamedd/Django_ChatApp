@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                         BlocProvider.of<AuthCubit>(context).logoutUser();
                       },
                       child: Text(
-                        'Sign Up',
+                        'logout',
                         style: TextStyle(color: Colors.blueGrey[300]),
                       ),
                     ),
